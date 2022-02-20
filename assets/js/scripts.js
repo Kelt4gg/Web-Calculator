@@ -3,6 +3,7 @@ var display1 = document.getElementById("display");
 var store = document.getElementById("store");
 store.innerHTML = "";
 var operation = ""
+let numberFormater = Intl.NumberFormat("pt-BR")
 historic = false
 number = 0
 
@@ -39,31 +40,31 @@ function check() {
 document.getElementById("plus").addEventListener("click", function () {
 
     check()
-    store.innerHTML = number + " + "
+    store.innerHTML = `${numberFormater.format(number)} + `
     operation = "plus"
 })
 
 document.getElementById("minus").addEventListener("click", function () {
     check()
-    store.innerHTML = number + " - "
+    store.innerHTML = `${numberFormater.format(number)} - `
     operation = "minus"
 })
 
 document.getElementById("mult").addEventListener("click", function () {
     check()
-    store.innerHTML = number + " x "
+    store.innerHTML = `${numberFormater.format(number)} x `
     operation = "mult"
 })
 
 document.getElementById("iguals").addEventListener("click", function () {
     if (operation == "mult") {
-        store.innerHTML += Number(display1.value) + " = " + (Number(number) * Number(display1.value));
+        store.innerHTML += `${numberFormater.format(Number(display1.value))} = ${(numberFormater.format(Number(number) * Number(display1.value)))}`;
     }
     else if (operation == "minus") {
-        store.innerHTML += Number(display1.value) + " = " + (Number(number) - Number(display1.value));
+        store.innerHTML += `${numberFormater.format(Number(display1.value))} = ${(numberFormater.format(Number(number) - Number(display1.value)))}`;
     }
     else if (operation == "plus") {
-        store.innerHTML += Number(display1.value) + " = " + (Number(number) + Number(display1.value));
+        store.innerHTML += `${numberFormater.format(Number(display1.value))} = ${(numberFormater.format(Number(number) + Number(display1.value)))}`;
     }
     display1.value = 0;
     number = 0;
