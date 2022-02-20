@@ -3,6 +3,7 @@ var display1 = document.getElementById("display");
 var store = document.getElementById("store");
 store.innerHTML = "";
 var operation = ""
+historic = false
 number = 0
 
 document.querySelectorAll(".numbers").forEach(function(item)
@@ -27,6 +28,10 @@ numbers[8].addEventListener("click", function () {display1.value += numbers[8].i
 numbers[10].addEventListener("click", function () {display1.value += numbers[10].innerHTML});
 
 function check() {
+    if (historic == true) {
+        document.getElementById("historic").innerHTML = store.innerHTML
+        historic = false
+    }
     number = display1.value
     display1.value = 0;
 }
@@ -51,26 +56,25 @@ document.getElementById("mult").addEventListener("click", function () {
 })
 
 document.getElementById("iguals").addEventListener("click", function () {
-    switch (operation) {
-        case "mult":
-            store.innerHTML += Number(display1.value) + " = " + (Number(number) * Number(display1.value));
-            display1.value = 0;
-            number = 0;
-            break
-        case "minus":
-            store.innerHTML += Number(display1.value) + " = " + (Number(number) - Number(display1.value));
-            display1.value = 0;
-            number = 0;
-            break
-        case "plus":
-            store.innerHTML += Number(display1.value) + " = " + (Number(number) + Number(display1.value));
-            display1.value = 0;
-            number = 0;
-            break
+    if (operation == "mult") {
+        store.innerHTML += Number(display1.value) + " = " + (Number(number) * Number(display1.value));
     }
+    else if (operation == "minus") {
+        store.innerHTML += Number(display1.value) + " = " + (Number(number) - Number(display1.value));
+    }
+    else if (operation == "plus") {
+        store.innerHTML += Number(display1.value) + " = " + (Number(number) + Number(display1.value));
+    }
+    display1.value = 0;
+    number = 0;
+    historic = true
 })
 
 document.getElementById("clear").addEventListener("click", function () {
+    if (historic == true) {
+        document.getElementById("historic").innerHTML = store.innerHTML
+        historic = false;
+    }
     display1.value = 0;
-    store.innerHTML = ""
+    store.innerHTML = "";
 })
