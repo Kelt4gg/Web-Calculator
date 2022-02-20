@@ -1,0 +1,57 @@
+body {
+    background-color: snow;
+    font-family:verdana;
+}
+h1 {
+    font-size: 36;
+    color:gray;
+    text-align: center;
+}
+
+.container {
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    width: 20%;
+    margin-left:40%;
+    height: 180px;
+    font-weight: bold;
+
+}
+
+.calculator button { 
+    display:flex;
+    flex-direction:column;
+    font-weight:bold;
+}
+
+#display {
+    text-align: right;
+    font-weight:bold;
+}
+
+#store {
+    text-align: right;
+    font-weight:bold;
+}
+
+button{
+    width: 25px;
+    height: 25px;
+    border: 1px solid grey;
+    background-color:black;
+    color:snow;
+}
+
+#display {
+    border: 1px solid grey;
+    background-color:black;
+    color:snow;
+}
+
+.seila {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
